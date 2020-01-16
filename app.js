@@ -5,6 +5,7 @@ import Bookmarks from './components/bookmarks/bookmarks.js';
 function init() {
     console.log('working!');
     const links = dummyLinks;
+    window.localStorage.setItem('links', links);
     const bookmarks = new Bookmarks(links);
     const urlValidator  = new URLValidator(links, bookmarks);
     bookmarks.populateLinks();

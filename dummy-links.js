@@ -1,3 +1,5 @@
+// dummy links (from https://gist.github.com/demersdesigns/4442cd84c1cc6c5ccda9b19eac1ba52b)
+
 export default [
     "https://www.youtube.com",
     "https://www.facebook.com",

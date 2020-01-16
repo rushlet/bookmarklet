@@ -5,8 +5,11 @@ class Bookmarks {
     }
 
     populateLinks() {
+        console.log('populating links');
         // check if session has list of links & if so populate
-        // if not, populate with dummy links (from https://gist.github.com/demersdesigns/4442cd84c1cc6c5ccda9b19eac1ba52b)
+        this.links = window.localStorage.getItem('links').split(','); // session stores as string, so convert to array for easier manipulation
+        console.log(this.links);
+        
         const numberOfLinks = this.links.length - 1;
         const listOfLinks = this.links.reduce((links, current, i) => {
             return `${links}<li class="bookmark">${current}</li>${(i === numberOfLinks) ? '</ul>' : ''}`;
@@ -14,12 +17,11 @@ class Bookmarks {
         this.bookmarksContainer.innerHTML = listOfLinks;
     }
 
-    addBookmark(url) {
-        // add new bookmark to array in session
-        // const bookmarkList = document.querySelector('.bookmarks');
-        // const existingList = bookmarkList.innerHTML;
-        // bookmarkList.innerHTML = `<li class="bookmark">${url}</li>${existingList}`;
-    }
+    // addBookmarkToDOM(url) {
+    //     const bookmarkList = document.querySelector('.bookmarks');
+    //     const existingList = bookmarkList.innerHTML;
+    //     bookmarkList.innerHTML = `<li class="bookmark">${url}</li>${existingList}`;
+    // }
 }
 
 export default Bookmarks;
