@@ -15,9 +15,10 @@ class Bookmarks {
     }
 
     addBookmark(url) {
-        const bookmarkList = document.querySelector('.bookmarks');
-        const existingList = bookmarkList.innerHTML;
-        bookmarkList.innerHTML = `<li class="bookmark">${url}</li>${existingList}`;
+        // add new bookmark to array in session
+        // const bookmarkList = document.querySelector('.bookmarks');
+        // const existingList = bookmarkList.innerHTML;
+        // bookmarkList.innerHTML = `<li class="bookmark">${url}</li>${existingList}`;
     }
 }
 

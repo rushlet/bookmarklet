@@ -15,8 +15,8 @@ class URLValidator {
         if (this.validateURL() && this.checkUniqueURL()) {
             // redirect to results page
             this.removeAlert();
-            console.log('Looking good, kiddo');
-            this.bookmarks.addBookmark(this.url);
+            this.bookmarks.addBookmark();
+            window.location.href = `/components/results/results-page.html?bookmark=${encodeURIComponent(this.url)}`;
         }
     }
 
