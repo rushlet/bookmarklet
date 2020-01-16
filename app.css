@@ -16,3 +16,7 @@ form {
     margin: auto;
     text-align: center;
 }
+
+#url.error {
+    border: 2px solid red;
+}
