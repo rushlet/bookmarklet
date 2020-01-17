@@ -8,12 +8,12 @@ function initResults() {
 function addBookmarkToSession(url) {
     console.log('add bookmark to session');
     // add new bookmark to array in session
-    const existingLinks = window.localStorage.getItem('links').split(',');
+    const existingLinks = localStorage.getItem('links').split(',');
     console.log('existiing links', typeof existingLinks, existingLinks);
     const updatedLinks = [url, ...existingLinks];
     console.log('updatedLinks', updatedLinks);
-    window.localStorage.setItem('links', updatedLinks);
-    console.log('links: ', window.localStorage.getItem('links'));
+    localStorage.setItem('links', updatedLinks);
+    console.log('links: ', localStorage.getItem('links'));
 }
 
 window.onload = initResults;

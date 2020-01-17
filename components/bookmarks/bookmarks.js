@@ -7,7 +7,7 @@ class Bookmarks {
     populateLinks() {
         console.log('populating links');
         // check if session has list of links & if so populate
-        this.links = window.localStorage.getItem('links').split(','); // session stores as string, so convert to array for easier manipulation
+        this.links = localStorage.getItem('links').split(','); // session stores as string, so convert to array for easier manipulation
         console.log(this.links);
         
         const numberOfLinks = this.links.length - 1;
