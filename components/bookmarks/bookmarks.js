@@ -12,17 +12,37 @@ class Bookmarks {
         console.log(this.links);
         const numberOfLinks = this.links.length - 1;
         const listOfLinks = this.links.reduce((links, current, i) => {
-            const linkEl = `<li class="bookmark">${current}</li>`;
+            const linkEl = `<li class="bookmark">
+            <button class="bookmark__edit" title="edit" aria-label="edit link"><img src="./assets/edit.svg" alt=""></button>
+            <button class="bookmark__delete" title="delete" aria-label="delete link"><img src="./assets/exit.svg" alt=""></button>
+            <a class="bookmark__link" href="${current}">${current}</a></li>`;
             return `${links}${linkEl}${(i === numberOfLinks) ? '</ul>' : ''}`;
         }, '<ul class="bookmarks">');
         this.bookmarksContainer.innerHTML = listOfLinks;
+        this.initialiseButtons();
     }
 
-    // addBookmarkToDOM(url) {
-    //     const bookmarkList = document.querySelector('.bookmarks');
-    //     const existingList = bookmarkList.innerHTML;
-    //     bookmarkList.innerHTML = `<li class="bookmark">${url}</li>${existingList}`;
-    // }
+    initialiseButtons() {
+        document.querySelectorAll('.bookmark__edit').forEach(btn => {
+            btn.addEventListener('click', (evt) => {
+                this.editBookmark(evt.target);
+            });
+        });
+        document.querySelectorAll('.bookmark__delete').forEach(btn => {
+            btn.addEventListener('click', (evt) => {
+                this.deleteBookmark(evt.target);
+            });
+        });
+    }
+
+    editBookmark() {
+        console.log('edit bookmark');
+    }
+
+    deleteBookmark() {
+        console.log('delete bookmark');
+    }
+
 }
 
 export default Bookmarks;
