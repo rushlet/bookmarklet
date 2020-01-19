@@ -12,14 +12,15 @@ window.onload = () => {
     const urlValidator = new URLValidator(links);
     const bookmarks = new Bookmarks(links, urlValidator);
     bookmarks.populateLinks();
-    setUpEvents(urlValidator);
     const pagination = new Pagination(links);
     pagination.setUpPagination();
+    setUpEvents(urlValidator, pagination);
 };
 
-function setUpEvents(urlValidator) {
+function setUpEvents(urlValidator, pagination) {
     document.querySelector('.add-bookmark').onsubmit = (e) => urlValidator.validateSubmission();
     Array.from(document.querySelectorAll('.button__close')).forEach((el) => {
         el.addEventListener('click', () => utils.hideEl(el.parentElement));
     });
+    document.querySelector('#show-number').addEventListener('change', () => pagination.updateNumberOfLinksToDisplay(event.target.value));
 }
