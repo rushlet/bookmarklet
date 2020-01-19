@@ -10,6 +10,8 @@ export default class Pagination {
     setUpPagination() {
         // create buttons for pagination
         this.numberOfPages = Math.ceil(this.totalLinks / this.linksPerPage);
+        console.log('make', this.numberOfPages, 'pages');
+        
         let pageLinks = '<button class="pagination__button btn-previous" disabled aria-label"previous"><</button>';
         for (let i = 1; i <= this.numberOfPages; i++) {
             pageLinks = `${pageLinks} <button class="pagination__button btn-number btn-${i} ${i === 1 ? 'selected' : ''}">${i}</button>`;    
@@ -30,8 +32,16 @@ export default class Pagination {
         document.querySelector('.btn-next').addEventListener('click', () => this.changePage(this.pageNumber + 1));
     }
 
+    updateNumberOfLinksToDisplay(linkNumber) {
+        this.linksPerPage = (linkNumber === 'all') ? this.totalLinks : parseInt(linkNumber);
+        if (linkNumber === 'all') this.pageNumber = 1;
+        this.setUpPagination();
+    }
+
     changePage(pageNumber) {
-        this.pageNumber = pageNumber;
+        console.log('pg number', pageNumber);
+        
+        this.pageNumber = parseInt(pageNumber);
         this.displayLinks(pageNumber - 1);
         this.enableAllButtons();
         this.updateDirectionalButtons();
@@ -42,6 +52,8 @@ export default class Pagination {
         // hide bookmarks that are out of range
         const firstIndexToShow = pageIndex * this.linksPerPage
         const lastIndexToShow = firstIndexToShow + this.linksPerPage - 1;
+        console.log('show between', firstIndexToShow, lastIndexToShow);
+        
         
         const allLinks = document.querySelectorAll('.bookmark');
         allLinks.forEach((link, i) => {
