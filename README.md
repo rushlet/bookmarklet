@@ -1,9 +1,9 @@
-#Bookmarklet
+# Bookmarklet
 A simple web app that maintains a list of links.
 You can see it in action at [https://rushlet.github.io/bookmarklet/index.html](https://rushlet.github.io/bookmarklet/index.html)
 
 
-##Overview
+## Overview
 Built using JavaScript, CSS and HTML, this simple app allows the user to add, edit and delete a list of links.
 
 A form is displayed on the top of the page that lets a user submit a link. This link is then validated using a regex to make sure it is an expected format. It is also checked against the existing links to make sure duplicates aren't added.
@@ -16,7 +16,7 @@ The user can also delete any link, a change which is reflected upon page reload.
 The list of links is displayed with pagination, so 20 links are shown per page. A drop down was added to allow the user to change this to 10, 20 or all results. 
 
 
-##Limitations
+## Limitations
 - Whether a link exists or not is not checked due to cross domain errors. I'd be interested to know how to achieve this only using front end technologies - I wanted to also get the page title and description to display in the list but couldn't achieve this because of the same reasons.
 - Links will only persist on one device
 - Currently, the name edits do not persist on reload - this is something that I would like to complete.
