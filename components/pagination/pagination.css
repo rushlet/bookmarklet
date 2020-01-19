@@ -5,7 +5,8 @@
     justify-content: space-evenly;
     max-width: 200px;
 }
-/* 
-.pagination button {
 
-} */
+.pagination button:disabled:hover {
+    cursor: initial;
+    background-color: transparent;
+}
