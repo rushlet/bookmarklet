@@ -5,15 +5,24 @@
 
 <body>
     <h1>Bookmarklet</h1>
-    <form>
-        <label for="url">Enter URL:</label>
-        <input type="text" id="url" name="url_to_add">
+    <form class="add-bookmark">
+        <label for="url-input">Enter URL:</label>
+        <input type="text" id="url-input" name="url_to_add">
         <button type="submit">Add</button>
     </form>
     <div class="error-msg"></div>
-
-    <div class="bookmarks-container">
-
+    <div class="bookmarks-container"></div>
+    <div class="edit-bookmark hide">
+        <h2>Edit bookmark</h2>
+        <button class="button__close" title="close" aria-label="close editor"><img src="./assets/exit.svg" alt=""></button>
+        <form class="edit-bookmark__form">
+            <label for="edit-bookmark__name">Name:</label>
+            <input type="text" id="edit-bookmark__name" name="bookmark_name">
+            <label for="edit-bookmark__url">Link:</label>
+            <input type="text" id="edit-bookmark__url" name="bookmark_link">
+            <button type="submit">Save</button>
+        </form>
+        <div class="error-msg"></div>
     </div>
 </body>
 

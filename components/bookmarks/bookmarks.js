@@ -1,8 +1,9 @@
 import * as utils from '../../utils.js';
 class Bookmarks {
-    constructor(existingLinks) {
+    constructor(existingLinks, urlValidator) {
         this.links = existingLinks;
         this.bookmarksContainer = document.querySelector('.bookmarks-container');
+        this.urlValidator = urlValidator;
     }
 
     populateLinks() {
@@ -35,12 +36,24 @@ class Bookmarks {
         });
     }
 
-    editBookmark() {
-        console.log('edit bookmark');
+    editBookmark(buttonEl) {
+        console.log('edit bookmark', buttonEl.parentElement);
+        const bookmarkLi = buttonEl.parentElement;
+        const bookmark = bookmarkLi.querySelector('a');
+        // show editor
+        const editor = document.querySelector('.edit-bookmark');
+        utils.showEl(editor);
+        // populate with current values
+        document.querySelector('#edit-bookmark__name').value = bookmark.innerText;
+        document.querySelector('#edit-bookmark__url').value = bookmark.href; 
+        document.querySelector('.edit-bookmark__form').onsubmit = (e) => {
+            e.preventDefault();
+            this.urlValidator.validateEdit(bookmark);
+        };
     }
 
-    deleteBookmark() {
-        console.log('delete bookmark');
+    deleteBookmark(buttonEl) {
+        console.log('delete bookmark', buttonEl);
     }
 
 }
