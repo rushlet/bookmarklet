@@ -1,14 +1,29 @@
+@import './components/bookmarks/bookmarks.css';
+@import './components/pagination/pagination.css';
+@import './components/results/results.css';
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin: 2rem auto;
+    margin: 0.5rem;
     display: block;
-    max-width: 750px;
+    max-width: 650px;
+    position: relative;
+}
+
+@media(min-width: 650px) {
+    body {
+        margin: 2rem auto;
+    }
 }
 
 h1 {
     text-align: center;
     margin-bottom: 2rem;
+}
+
+ul {
+    padding: 0;
 }
 
 form {
@@ -17,28 +32,72 @@ form {
     text-align: center;
 }
 
-#url.error {
+button {
+    border: none;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #f3f3f3;
+}
+
+button img {
+    pointer-events: none;
+}
+
+.error {
     border: 2px solid red;
-}
-
-.edit-bookmark {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background-color: azure;
-}
-
-@media(min-width: 900px) {
-    .edit-bookmark {
-        max-width: 50%;
-        max-height: 50%;
-    }
 }
 
 .hide {
     display: none;
+}
+
+/* URL Input */
+
+.input-container {
+    background-color: #f3f3f3;
+    padding: 2rem;
+    margin: 1rem auto;
+}
+
+.add-bookmark {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 400px;
+}
+
+.add-bookmark form {
+    display: block;
+    margin: auto;
+}
+
+.add-bookmark input {
+    flex-grow: 1;
+    max-width: 350px;
+    margin: 0 0.5rem 0 1rem;
+    line-height: 1.5rem;
+}
+
+.add-bookmark button {
+    border: 1px solid #999;
+}
+
+.error-msg {
+    text-align: center;
+    font-weight: bold;
+    margin: 2rem;
+}
+
+/* filters */
+.sort-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 3rem auto 1rem;
+    font-size: 0.875rem;
 }

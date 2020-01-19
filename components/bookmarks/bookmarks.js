@@ -14,8 +14,8 @@ class Bookmarks {
         const numberOfLinks = this.links.length - 1;
         const listOfLinks = this.links.reduce((links, current, i) => {
             const linkEl = `<li class="bookmark">
-            <button class="bookmark__edit" title="edit" aria-label="edit link"><img src="./assets/edit.svg" alt=""></button>
-            <button class="bookmark__delete" title="delete" aria-label="delete link"><img src="./assets/exit.svg" alt=""></button>
+            <button class="bookmark__btn bookmark__edit" title="edit" aria-label="edit link"><img src="./assets/edit.svg" alt=""></button>
+            <button class="bookmark__btn bookmark__delete" title="delete" aria-label="delete link"><img src="./assets/exit.svg" alt=""></button>
             <a class="bookmark__link" href="${current}">${current}</a></li>`;
             return `${links}${linkEl}${(i === numberOfLinks) ? '</ul>' : ''}`;
         }, '<ul class="bookmarks">');
@@ -37,9 +37,8 @@ class Bookmarks {
     }
 
     editBookmark(buttonEl) {
-        console.log('edit bookmark', buttonEl.parentElement);
         const bookmarkLi = buttonEl.parentElement;
-        const bookmark = bookmarkLi.querySelector('a');
+        const bookmark = bookmarkLi.querySelector('a');        
         // show editor
         const editor = document.querySelector('.edit-bookmark');
         utils.showEl(editor);
