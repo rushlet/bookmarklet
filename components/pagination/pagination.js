@@ -4,42 +4,66 @@ export default class Pagination {
         this.links = links;
         this.totalLinks = this.links.length;
         this.paginationContainer = document.querySelector('.pagination');
+        this.pageNumber = 1;
     }
 
     setUpPagination() {
+        // create buttons for pagination
         this.numberOfPages = Math.ceil(this.totalLinks / this.linksPerPage);
         console.log('number of pages', this.numberOfPages);
-        let pageLinks = '';
+        let pageLinks = '<button class="pagination__button btn-previous" disabled aria-label"previous"><</button>';
         for (let i = 1; i <= this.numberOfPages; i++) {
-            pageLinks = `${pageLinks} <button class="pagination__button ${i === 1 ? 'selected' : ''}">${i}</button>`;    
+            pageLinks = `${pageLinks} <button class="pagination__button btn-number btn-${i} ${i === 1 ? 'selected' : ''}">${i}</button>`;    
         }
+        pageLinks = `${pageLinks} <button class="pagination__button btn-next" aria-label"next">></button>`;
         this.paginationContainer.innerHTML = pageLinks;
-        this.displayInitialLinks();
-        [...document.querySelectorAll('.pagination__button')].forEach((btn) => btn.addEventListener('click', (event) => this.changePage(event)));
+        // show first page
+        this.changePage(this.pageNumber);
+        // add event listeners for page change
+        this.addEventListeners();
     }
 
-    displayInitialLinks() {
-        const allLinks = document.querySelectorAll('.bookmark');
-        allLinks.forEach((link, i) => {
-            if (i >= this.linksPerPage) link.classList.add('hide');
+    addEventListeners() {
+        [...document.querySelectorAll('.btn-number')].forEach((btn) => {
+            btn.addEventListener('click', (event) => this.changePage(event.target.innerText));
         });
+        document.querySelector('.btn-previous').addEventListener('click', () => this.changePage(this.pageNumber - 1));
+        document.querySelector('.btn-next').addEventListener('click', () => this.changePage(this.pageNumber + 1));
     }
 
-    changePage(event) {
-        const pageNumber = event.target.innerText;
-        const firstIndexToShow = (pageNumber - 1) * this.linksPerPage
+    changePage(pageNumber) {
+        this.pageNumber = pageNumber;
+        this.displayLinks(pageNumber - 1);
+        this.enableAllButtons();
+        this.updateDirectionalButtons();
+        this.disableButton(document.querySelector(`.btn-${pageNumber}`));
+    }
+
+    displayLinks(pageIndex) {
+        // hide bookmarks that are out of range
+        const firstIndexToShow = pageIndex * this.linksPerPage
         const lastIndexToShow = firstIndexToShow + this.linksPerPage - 1;
-        console.log('show numbers between', firstIndexToShow, lastIndexToShow);
         
         const allLinks = document.querySelectorAll('.bookmark');
         allLinks.forEach((link, i) => {
             link.classList.add('hide');
             if (i >= firstIndexToShow && i <= lastIndexToShow) {
-                console.log('showing link');
-                
                 link.classList.remove('hide');
             }
         });
+    }
+
+    enableAllButtons() {
+        [...document.querySelectorAll('.btn-number')].forEach((button) => button.disabled = false);
+    }
+
+    updateDirectionalButtons() {
+        document.querySelector('.btn-previous').disabled = !(this.pageNumber > 1);
+        document.querySelector('.btn-next').disabled = !(this.pageNumber < this.numberOfPages);
+    }
+
+    disableButton(btn) {
+        btn.disabled = true;
     }
 
 }
