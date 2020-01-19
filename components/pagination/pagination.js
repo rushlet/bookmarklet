@@ -10,7 +10,6 @@ export default class Pagination {
     setUpPagination() {
         // create buttons for pagination
         this.numberOfPages = Math.ceil(this.totalLinks / this.linksPerPage);
-        console.log('number of pages', this.numberOfPages);
         let pageLinks = '<button class="pagination__button btn-previous" disabled aria-label"previous"><</button>';
         for (let i = 1; i <= this.numberOfPages; i++) {
             pageLinks = `${pageLinks} <button class="pagination__button btn-number btn-${i} ${i === 1 ? 'selected' : ''}">${i}</button>`;    
