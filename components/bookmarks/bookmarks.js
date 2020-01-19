@@ -60,7 +60,6 @@ class Bookmarks {
             utils.removeLink(bookmark.querySelector('a').href);
         }
     }
-
 }
 
 export default Bookmarks;
