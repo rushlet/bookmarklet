@@ -20,3 +20,25 @@ form {
 #url.error {
     border: 2px solid red;
 }
+
+.edit-bookmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: azure;
+}
+
+@media(min-width: 900px) {
+    .edit-bookmark {
+        max-width: 50%;
+        max-height: 50%;
+    }
+}
+
+.hide {
+    display: none;
+}
