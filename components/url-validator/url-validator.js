@@ -21,7 +21,6 @@ class URLValidator {
     }
 
     validateURL(url) {
-        console.log('url', url);
         // regex to check url is correct format (and has http or https protocol)
         const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
         const regex = new RegExp(expression);
@@ -64,7 +63,6 @@ class URLValidator {
             bookmarkEl.innerText = name;
             // update list in storage
             utils.replaceLink(exisitingLink, url);
-            console.log('valid edits');
             // hide editor
             utils.hideEl(editor);
         }
