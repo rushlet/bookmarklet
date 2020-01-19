@@ -16,6 +16,12 @@ export function addToLinks(link) {
     setLinks(updatedLinks);
 }
 
+export function removeLink(linkToRemove) {
+    const existingLinks = getLinksAsArray();
+    const updatedLinks = existingLinks.filter((link) => link !== linkToRemove);
+    setLinks(updatedLinks);
+}
+
 export function replaceLink(existing, newLink) {
     const existingLinks = getLinksAsArray();
     const oldLink = existing.replace(/\/$/, "");

@@ -54,6 +54,11 @@ class Bookmarks {
 
     deleteBookmark(buttonEl) {
         console.log('delete bookmark', buttonEl);
+        const bookmark = buttonEl.parentElement;
+        if (confirm('Are you sure you want to delete this bookmark?')) {
+            document.querySelector('.bookmarks').removeChild(bookmark);
+            utils.removeLink(bookmark.querySelector('a').href);
+        }
     }
 
 }
