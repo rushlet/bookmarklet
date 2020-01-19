@@ -1,0 +1,100 @@
+.bookmark {
+    list-style-type: none;
+    border: 1px solid #999;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.bookmark a {
+    vertical-align: middle;
+}
+
+.bookmark__btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0.65rem;
+    top: 0.65rem;
+    padding: 0;
+}
+
+.bookmark__edit {
+    right: 3rem;
+}
+
+.bookmark button img {
+    width: 1.25rem;
+    vertical-align: middle;
+}
+
+/* BOOKMARK EDITOR */
+
+.edit-bookmark {
+    display: block;
+    position: sticky;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #f3f3f3;
+    width: 100%;
+    max-height: 15rem;
+    top: 2rem;
+    padding: 1.5rem;
+}
+
+.edit-bookmark h2 {
+    text-align: center;
+}
+
+.edit-bookmark form {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    padding: 1rem 1rem 2.5rem;
+    max-width: 300px;
+    padding-bottom: 1rem;
+}
+
+.edit-bookmark label {
+    text-align: left;
+    padding-right: 1rem;
+    width: 3rem;
+}
+
+.edit-bookmark input {
+    flex-grow: 1;
+    line-height: 1.25rem;
+    margin: 0.5rem auto;
+    min-width: 220px;
+}
+
+.edit-bookmark__save {
+    margin: 1rem 3rem;
+    border: 1px solid #999;
+}
+
+.button__close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background-color: rgba(0,0,0,0);
+    padding: 0;
+}
+
+.button__close img {
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.edit-bookmark .error-msg {
+    margin-top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1rem;
+}
