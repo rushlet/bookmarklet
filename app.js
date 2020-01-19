@@ -5,8 +5,6 @@ import Bookmarks from './components/bookmarks/bookmarks.js';
 import Pagination from './components/pagination/pagination.js'
 
 window.onload = () => {
-    console.log('working!');
-    // utils.setLinks(dummyLinks); // reset links
     if (utils.getLinksAsArray().length === 0) utils.setLinks(dummyLinks); // set up dummy links if not used before
     const links = utils.getLinksAsArray();
     const urlValidator = new URLValidator(links);

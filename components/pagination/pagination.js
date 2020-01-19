@@ -9,9 +9,7 @@ export default class Pagination {
 
     setUpPagination() {
         // create buttons for pagination
-        this.numberOfPages = Math.ceil(this.totalLinks / this.linksPerPage);
-        console.log('make', this.numberOfPages, 'pages');
-        
+        this.numberOfPages = Math.ceil(this.totalLinks / this.linksPerPage);        
         let pageLinks = '<button class="pagination__button btn-previous" disabled aria-label"previous"><</button>';
         for (let i = 1; i <= this.numberOfPages; i++) {
             pageLinks = `${pageLinks} <button class="pagination__button btn-number btn-${i} ${i === 1 ? 'selected' : ''}">${i}</button>`;    
@@ -38,9 +36,7 @@ export default class Pagination {
         this.setUpPagination();
     }
 
-    changePage(pageNumber) {
-        console.log('pg number', pageNumber);
-        
+    changePage(pageNumber) {        
         this.pageNumber = parseInt(pageNumber);
         this.displayLinks(pageNumber - 1);
         this.enableAllButtons();
@@ -51,10 +47,7 @@ export default class Pagination {
     displayLinks(pageIndex) {
         // hide bookmarks that are out of range
         const firstIndexToShow = pageIndex * this.linksPerPage
-        const lastIndexToShow = firstIndexToShow + this.linksPerPage - 1;
-        console.log('show between', firstIndexToShow, lastIndexToShow);
-        
-        
+        const lastIndexToShow = firstIndexToShow + this.linksPerPage - 1;        
         const allLinks = document.querySelectorAll('.bookmark');
         allLinks.forEach((link, i) => {
             link.classList.add('hide');

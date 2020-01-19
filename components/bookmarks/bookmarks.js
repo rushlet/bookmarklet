@@ -7,10 +7,8 @@ class Bookmarks {
     }
 
     populateLinks() {
-        console.log('populating links');
-        // check if session has list of links & if so populate
-        this.links = utils.getLinksAsArray(); // session stores as string, so convert to array for easier manipulation
-        console.log(this.links);
+        // check if storage has list of links & if so populate
+        this.links = utils.getLinksAsArray(); // storage stores as string, so convert to array for easier manipulation
         const numberOfLinks = this.links.length - 1;
         const listOfLinks = this.links.reduce((links, current, i) => {
             const linkEl = `<li class="bookmark">
@@ -52,7 +50,6 @@ class Bookmarks {
     }
 
     deleteBookmark(buttonEl) {
-        console.log('delete bookmark', buttonEl);
         const bookmark = buttonEl.parentElement;
         if (confirm('Are you sure you want to delete this bookmark?')) {
             document.querySelector('.bookmarks').removeChild(bookmark);

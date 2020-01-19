@@ -21,7 +21,6 @@ class URLValidator {
     }
 
     validateURL(url) {
-        console.log('url', url);
         // regex to check url is correct format (and has http or https protocol)
         const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
         const regex = new RegExp(expression);
@@ -50,11 +49,9 @@ class URLValidator {
         const editor = event.target.parentElement;
         this.errorMessageContainer = editor.querySelector('.error-msg');
         const exisitingLink = bookmarkEl.href;
-        console.log(event, 'event.target', event.target);
         const urlInput = event.target.querySelector('#edit-bookmark__url');
         this.input = urlInput;
         const url = urlInput.value;
-        console.log('url', this.input, urlInput.innerText, urlInput.value);
         
         const name = event.target.querySelector('#edit-bookmark__name').value;
         if (this.validateURL(url) && this.checkUniqueURL(url) && this.checkUniqueName(name, bookmarkEl)) {
@@ -63,7 +60,6 @@ class URLValidator {
             bookmarkEl.innerText = name;
             // update list in storage
             utils.replaceLink(exisitingLink, url);
-            console.log('valid edits');
             // hide editor
             utils.hideEl(editor);
         }
