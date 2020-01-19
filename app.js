@@ -2,6 +2,7 @@ import dummyLinks from './dummy-links.js';
 import * as utils from './utils.js';
 import URLValidator from './components/url-validator/url-validator.js';
 import Bookmarks from './components/bookmarks/bookmarks.js';
+import Pagination from './components/pagination/pagination.js'
 
 window.onload = () => {
     console.log('working!');
@@ -12,6 +13,8 @@ window.onload = () => {
     const bookmarks = new Bookmarks(links, urlValidator);
     bookmarks.populateLinks();
     setUpEvents(urlValidator);
+    const pagination = new Pagination(links);
+    pagination.setUpPagination();
 };
 
 function setUpEvents(urlValidator) {
