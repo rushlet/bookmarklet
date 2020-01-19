@@ -1,0 +1,11 @@
+.pagination {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 200px;
+}
+/* 
+.pagination button {
+
+} */
