@@ -3,12 +3,12 @@ import * as utils from '../../utils.js';
 class URLValidator {
     constructor(existingLinks) {
         this.existingLinks = existingLinks;
-        this.input = document.querySelector('#url-input');
     }
     
     validateSubmission() {
         // check URL is valid & unique, if so redirect to results page
         event.preventDefault();
+        this.input = document.querySelector('#url-input');
         this.url = this.input.value;
         this.errorMessageContainer = document.querySelector('.error-msg');
         if (this.validateURL(this.url) && this.checkUniqueURL(this.url)) {
