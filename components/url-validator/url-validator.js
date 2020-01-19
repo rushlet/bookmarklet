@@ -30,9 +30,12 @@ class URLValidator {
         return validURL;
     }
 
-    checkUniqueURL(url) {
+    checkUniqueURL(url, existingLink) {
         // check url isn't already in list
-        const uniqueURL = !this.existingLinks.includes(url);
+        // if existing link, this is being called from the edit - need to remove url being edited from list to check against
+        let links = this.existingLinks;
+        if (existingLink) links = this.existingLinks.filter((link) => link !== existingLink)
+        const uniqueURL = !links.includes(url);
         if (!uniqueURL) this.alertUser('existingURL');
         return uniqueURL;
     }
@@ -50,14 +53,12 @@ class URLValidator {
         const editor = event.target.parentElement;
         this.errorMessageContainer = editor.querySelector('.error-msg');
         const exisitingLink = bookmarkEl.href;
-        console.log(event, 'event.target', event.target);
         const urlInput = event.target.querySelector('#edit-bookmark__url');
         this.input = urlInput;
         const url = urlInput.value;
-        console.log('url', this.input, urlInput.innerText, urlInput.value);
         
         const name = event.target.querySelector('#edit-bookmark__name').value;
-        if (this.validateURL(url) && this.checkUniqueURL(url) && this.checkUniqueName(name, bookmarkEl)) {
+        if (this.validateURL(url) && this.checkUniqueURL(url, exisitingLink) && this.checkUniqueName(name, bookmarkEl)) {
             // update list of links in DOM
             bookmarkEl.href = url;
             bookmarkEl.innerText = name;
