@@ -5,7 +5,7 @@ import Bookmarks from './components/bookmarks/bookmarks.js';
 import Pagination from './components/pagination/pagination.js'
 
 window.onload = () => {
-    if (utils.getLinksAsArray().length === 0) utils.setLinks(dummyLinks); // set up dummy links if not used before
+    if (!utils.getLinks()) utils.setLinks(dummyLinks); // set up dummy links if not used before
     const links = utils.getLinksAsArray();
     const urlValidator = new URLValidator(links);
     const bookmarks = new Bookmarks(links, urlValidator);
